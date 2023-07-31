@@ -1,0 +1,34 @@
+.directory {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.pokemon-card {
+    padding: 20px 15px;
+    min-height: 300px;
+    background-color: #fff;
+    margin: 15px;
+    border-radius: 10px;
+    border: 2px solid #135092;
+}
+
+.image-container {
+    padding: 20px;
+    width: 200px;
+    height: 200px;
+    background-color: #fff;
+    border: 1px solid #135092;
+    border-radius: 10px;
+}
+
+.image-container img {
+    width: 100%;
+    height: 100%;
+}
+
+.pokemon-info h3 {
+    text-align: center;
+    font-size: 21px;
+    color: #135092;
+}

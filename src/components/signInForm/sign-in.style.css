@@ -1,0 +1,41 @@
+.sign-in-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 40px;
+}
+
+h2 {
+    font-size: 21px;
+    color: #135092;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+span {
+    margin-bottom: 20px;
+    text-align: left;
+}
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    margin: 10px 0;
+    padding: 7px 10px;
+}
+
+input:focus {
+    outline: none;
+}
+
+.button-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.button-container button {
+    width: 45%;
+    font-size: 14px;
+    margin: 0;
+}
