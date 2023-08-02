@@ -1,24 +1,26 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux';
 
 import { PokemonsProvider } from './contexts/pokemons.context';
 import { CartProvider } from './contexts/cart.context';
-import { UserProvider } from './contexts/user.context';
+
+import { store } from './store/store';
 
 import App from "./App";
 
 const root = createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
-        <BrowserRouter>
-            <UserProvider>
+        <Provider store={store}>
+            <BrowserRouter>
                 <PokemonsProvider>
                     <CartProvider>
                         <App />
                     </CartProvider>
                 </PokemonsProvider>
-            </UserProvider>
-        </BrowserRouter>
+            </BrowserRouter>
+        </Provider>
     </React.StrictMode>
 );
