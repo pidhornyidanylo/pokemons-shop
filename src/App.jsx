@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom';
 
-import { onAuthStateChangedListener, 
-      createUserDocumentFromAuth} from './utils/firebase.utils';
+import { onAuthStateChangedListener, createUserDocumentFromAuth} from './utils/firebase.utils';
 
 import Home from './routes/home/home';
 import Navigation from './routes/navigation/navigation';
@@ -12,8 +11,9 @@ import Cart from './routes/cart/cart';
 
 import { setUserAction } from './store/user/user.action';
 
-import './App.css';
 import { useDispatch } from 'react-redux';
+
+import './App.css';
 
 const App = () => {
 

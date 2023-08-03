@@ -1,17 +1,25 @@
-import React, { useContext } from 'react'
-import { CartContext } from '../../contexts/cart.context.jsx';
+import React from 'react'
+
+import { useSelector, useDispatch } from 'react-redux';
+
+import { selectCartItems } from '../../store/cart/cart.selector.js';
+import { addItemToCart } from '../../store/cart/cart.action.js';
 
 import './directory-item.style.css';
 
 const DirectoryItem = ({ pokemon, image, id, quantity }) => {
-  const { addItemToCart, setCartCount, cartCount } = useContext(CartContext);
+
+  const dispatch = useDispatch();
+  const cartItems = useSelector(selectCartItems);
+
+  const addPokemonToCart = () => { 
+    dispatch(addItemToCart(cartItems, pokemon));
+
+  }
+
   pokemon.id = id;
   pokemon.quantity = quantity;
   pokemon.image = image; 
-  const addPokemonToCart = () => {
-    addItemToCart(pokemon);
-    setCartCount(cartCount + 1)
-  };
 
   return (
     <div className='pokemon-card'>

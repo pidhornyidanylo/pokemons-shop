@@ -1,28 +1,31 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux';
+
+import Dropdown from '../../components/dropdown/dropdown.component';
+
+import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg';
 import { Outlet, Link } from 'react-router-dom';
 
-import { CartContext } from '../../contexts/cart.context';
 import { selectCurrentUser } from '../../store/user/user.selctor'
+import { selectCartCount, selectIsCartOpen } from '../../store/cart/cart.selector';
+import { setIsCartOpen } from '../../store/cart/cart.action';
 
 import { signOutUser } from '../../utils/firebase.utils';
 
-import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg';
-import Dropdown from '../../components/dropdown/dropdown.component';
-
 import './navigation.style.css';
-import { useSelector } from 'react-redux';
 
 const Navigation = () => {
   const [ time, setTime ] = useState('');
-  const userSelector = useSelector(selectCurrentUser);
+  const dispatch = useDispatch();
 
-  const { isCartOpen, setIsCartOpen, cartCount } = useContext(CartContext);
+  const userSelector = useSelector(selectCurrentUser);
+  const cartCountSelector = useSelector(selectCartCount);
+  const cartOpenSelector = useSelector(selectIsCartOpen);
 
   const openDropdown = () => {
-    setIsCartOpen(!isCartOpen)
+    dispatch(setIsCartOpen(!cartOpenSelector))
   }
   
-
   useEffect(() => {
     setInterval(() => {
       const setTimeFunc = () => {
@@ -45,10 +48,10 @@ const Navigation = () => {
           {userSelector ? <div style={{cursor: 'pointer'}} onClick={signOutUser}>SIGN OUT</div> : <Link to='auth'>SIGN IN</Link>}
           <Link onClick={openDropdown} className='cart-icon'>
             <ShoppingIcon style={{width: '25px', height: '25px'}} />
-            <span className='item-count'>{cartCount}</span>
+            <span className='item-count'>{cartCountSelector}</span>
           </Link>
         </div>
-        {isCartOpen && <Dropdown />}
+        {cartOpenSelector && <Dropdown />}
       </div>
       <Outlet />
     </>

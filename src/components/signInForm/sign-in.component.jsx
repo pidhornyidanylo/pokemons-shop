@@ -16,7 +16,7 @@ const SignInForm = () => {
 
   const signInWithGoogle = async () => {
     await signInWithGooglePopup();
-    console.log(auth)
+    // console.log(auth)
   };
 
   const handleInput = (e) => {
@@ -32,7 +32,6 @@ const SignInForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     signInUserWithEmailAndPassword();
-
   }
 
   const signInUserWithEmailAndPassword = async () => {

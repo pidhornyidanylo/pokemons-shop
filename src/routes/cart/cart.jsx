@@ -1,12 +1,14 @@
-import React, { useContext } from 'react'
-import { CartContext } from '../../contexts/cart.context';
+import React from 'react'
+
+import { useSelector } from 'react-redux';
+import { selectCartItems } from '../../store/cart/cart.selector';
 
 import CartItem from '../../components/cart-item/cart-item.component';
 
 import './cart.style.css';
 
 const Cart = () => {
-  const { cartItems } = useContext(CartContext);
+  const cartItemsSelected = useSelector(selectCartItems)
 
   return (
     <div className='cart-container'>
@@ -24,7 +26,7 @@ const Cart = () => {
           <span>Remove</span>
         </div>
       </div>
-      {cartItems.map((cartItem) => (
+      {cartItemsSelected.map((cartItem) => (
         <CartItem key={cartItem.id} cartItem={cartItem} />
       ))}
   </div>

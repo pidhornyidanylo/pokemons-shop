@@ -4,7 +4,6 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
 import { PokemonsProvider } from './contexts/pokemons.context';
-import { CartProvider } from './contexts/cart.context';
 
 import { store } from './store/store';
 
@@ -16,9 +15,7 @@ root.render(
         <Provider store={store}>
             <BrowserRouter>
                 <PokemonsProvider>
-                    <CartProvider>
-                        <App />
-                    </CartProvider>
+                    <App />
                 </PokemonsProvider>
             </BrowserRouter>
         </Provider>
