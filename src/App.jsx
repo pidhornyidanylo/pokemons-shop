@@ -9,25 +9,18 @@ import Shop from './routes/shop/shop';
 import Auth from './routes/auth/auth';
 import Cart from './routes/cart/cart';
 
-import { setUserAction } from './store/user/user.action';
+import { fetchUserAction } from './store/user/user.action';
 
 import { useDispatch } from 'react-redux';
 
 import './App.css';
 
 const App = () => {
-
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChangedListener(user => {
-        if(user) {
-            createUserDocumentFromAuth(user);
-        }
-        dispatch(setUserAction(user));
-    })
-    return unsubscribe;
-  }, [dispatch]);
+    dispatch(fetchUserAction())
+  }, [dispatch])
 
   return (
     <Routes>

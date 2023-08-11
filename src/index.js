@@ -3,8 +3,6 @@ import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 
-import { PokemonsProvider } from './contexts/pokemons.context';
-
 import { store } from './store/store';
 
 import App from "./App";
@@ -14,9 +12,7 @@ root.render(
     <React.StrictMode>
         <Provider store={store}>
             <BrowserRouter>
-                <PokemonsProvider>
-                    <App />
-                </PokemonsProvider>
+                <App />
             </BrowserRouter>
         </Provider>
     </React.StrictMode>
