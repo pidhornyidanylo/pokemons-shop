@@ -1,15 +1,25 @@
-import React, { useContext } from 'react'
+import React, { useEffect } from 'react'
+
+import { useDispatch, useSelector } from 'react-redux';
 
 import Directory from '../../components/directory/directory.component';
 
-import { PokemonsContext } from '../../contexts/pokemons.context.jsx';
+import { selectPokemons } from '../../store/pokemons/pokemons.selector';
+import { fetchPokemonsAsync } from '../../store/pokemons/pokemons.action';
 
 const Shop = () => {
-  const poks = useContext(PokemonsContext);
+
+  const dispatch = useDispatch();
+  const poks = useSelector(selectPokemons);
+  console.log(poks)
+
+  useEffect(() => {
+    dispatch(fetchPokemonsAsync())
+  }, [dispatch])
 
   return (
     <div>
-      <Directory pokemons={poks.pokemons} />
+      <Directory pokemons={poks} />
     </div>
   )
 }

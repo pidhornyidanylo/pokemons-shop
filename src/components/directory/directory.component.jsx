@@ -8,7 +8,7 @@ import './directory.style.css';
 const Directory = ({ pokemons }) => {
     return (
     <div className='directory'>
-        {pokemons[0]?.map((pokemon, idx) => (
+        {pokemons?.map((pokemon, idx) => (
             <DirectoryItem pokemon={pokemon} key={idx + Math.random().toFixed(1)} image={poksList[idx].img} id={poksList[idx].id} quantity={poksList[idx].quantity} />
         ))}  
     </div>

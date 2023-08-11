@@ -18,7 +18,7 @@ import './App.css';
 const App = () => {
 
   const dispatch = useDispatch();
-  
+
   useEffect(() => {
     const unsubscribe = onAuthStateChangedListener(user => {
         if(user) {
