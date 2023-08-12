@@ -9,7 +9,7 @@ import './sign-up.style.css';
 import { useState } from 'react';
 
 const defaultState = {
-  username: '',
+  displayName: '',
   email: '',
   password: '',
   confirmPassword: ''
@@ -65,7 +65,7 @@ const SignUp = () => {
       <h2>Don't have an account?</h2>
       <span>Sign up with your emain and password</span>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <input onChange={e => handleChange(e)} name='username' value={displayName} type="text" placeholder='Username' />
+        <input onChange={e => handleChange(e)} name='displayName' value={displayName} type="text" placeholder='Username' />
         <input onChange={e => handleChange(e)} name='email' value={email} type="email" placeholder='Email' />
         <input onChange={e => handleChange(e)} name='password' value={password} type="password" placeholder='Password'/>
         <input onChange={e => handleChange(e)} name='confirmPassword' value={confirmPassword} type="password" placeholder='Confirm password' />

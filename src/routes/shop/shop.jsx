@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Directory from '../../components/directory/directory.component';
 
 import { selectPokemons } from '../../store/pokemons/pokemons.selector';
-import { fetchPokemonsAsync } from '../../store/pokemons/pokemons.action';
+import { fetchPokemonsStart } from '../../store/pokemons/pokemons.action';
 
 const Shop = () => {
 
@@ -14,7 +14,7 @@ const Shop = () => {
   console.log(poks)
 
   useEffect(() => {
-    dispatch(fetchPokemonsAsync())
+    dispatch(fetchPokemonsStart())
   }, [dispatch])
 
   return (
