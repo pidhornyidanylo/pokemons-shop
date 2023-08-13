@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import { Routes, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-import { onAuthStateChangedListener, createUserDocumentFromAuth} from './utils/firebase.utils';
+import { Routes, Route } from 'react-router-dom';
 
 import Home from './routes/home/home';
 import Navigation from './routes/navigation/navigation';
@@ -9,9 +9,7 @@ import Shop from './routes/shop/shop';
 import Auth from './routes/auth/auth';
 import Cart from './routes/cart/cart';
 
-import { fetchUserAction } from './store/user/user.action';
-
-import { useDispatch } from 'react-redux';
+import { checkUserSession } from './store/user/user.action';
 
 import './App.css';
 
@@ -19,7 +17,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchUserAction())
+    dispatch(checkUserSession())
   }, [dispatch])
 
   return (

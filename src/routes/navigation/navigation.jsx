@@ -6,13 +6,12 @@ import Dropdown from '../../components/dropdown/dropdown.component';
 import { ReactComponent as ShoppingIcon } from '../../assets/shopping-bag.svg';
 import { Outlet, Link } from 'react-router-dom';
 
-import { selectCurrentUser } from '../../store/user/user.selctor'
+import { selectCurrentUser } from '../../store/user/user.selector'
 import { selectCartCount, selectIsCartOpen } from '../../store/cart/cart.selector';
 import { setIsCartOpen } from '../../store/cart/cart.action';
 
-import { signOutUser } from '../../utils/firebase.utils';
-
 import './navigation.style.css';
+import { signOutStart } from '../../store/user/user.action';
 
 const Navigation = () => {
   const [ time, setTime ] = useState('');
@@ -45,7 +44,7 @@ const Navigation = () => {
         <div className='navigation-links'>
           <div className='current-time'>{time}</div>
           <Link to='shop'>SHOP</Link>
-          {userSelector ? <div style={{cursor: 'pointer'}} onClick={signOutUser}>SIGN OUT</div> : <Link to='auth'>SIGN IN</Link>}
+          {userSelector ? <div style={{cursor: 'pointer'}} onClick={() => dispatch(signOutStart())}>SIGN OUT</div> : <Link to='auth'>SIGN IN</Link>}
           <Link onClick={openDropdown} className='cart-icon'>
             <ShoppingIcon style={{width: '25px', height: '25px'}} />
             <span className='item-count'>{cartCountSelector}</span>

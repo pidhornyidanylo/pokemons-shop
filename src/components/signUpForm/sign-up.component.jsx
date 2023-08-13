@@ -1,4 +1,7 @@
 import React from 'react'
+import { useDispatch } from 'react-redux';
+
+import { signUpStart } from '../../store/user/user.action';
 
 import { 
   createAuthUserWithEmailAndPassword, 
@@ -16,7 +19,7 @@ const defaultState = {
 }
 
 const SignUp = () => {
-
+  const dispatch = useDispatch();
   const [ user, setUser ] = useState(defaultState);
 
   const { 
@@ -34,7 +37,6 @@ const SignUp = () => {
     e.preventDefault();
     const { name, value } = e.target;
     setUser({...user, [name]: value})
-    console.log(user);
    }
 
    const handleSubmit = async (e) => {
@@ -46,8 +48,7 @@ const SignUp = () => {
     }
 
     try {
-      const { user } = await createAuthUserWithEmailAndPassword(email, password);
-      await createUserDocumentFromAuth(user, { displayName });
+      dispatch(signUpStart(email, password, displayName));
       resetFormFields();
     } catch (error) {
       if (error.code === 'auth/email-already-in-use') {

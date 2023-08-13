@@ -11,7 +11,6 @@ const Shop = () => {
 
   const dispatch = useDispatch();
   const poks = useSelector(selectPokemons);
-  console.log(poks)
 
   useEffect(() => {
     dispatch(fetchPokemonsStart())
